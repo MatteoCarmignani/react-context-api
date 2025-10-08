@@ -5,6 +5,8 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 import DefaultLayout from './layout/DefaultLayout';
 
+import { BudgetProvider } from './context/BudgetContext';
+
  
 import HomePage from './pages/HomePage';
 import AboutPage from './pages/AboutPage';
@@ -13,24 +15,24 @@ import ProductDetailPage from './pages/ProductDetailPage';
 import Error404 from './pages/Error404';
 
 function App() {
-
-    return (
-        <BudgetContext.Provider>
-            <BrowserRouter>
-                <Routes>
-                    <Route element={<DefaultLayout />}>
-                        <Route path="/" element={<HomePage />} />
-                        <Route path="/about" element={<AboutPage />} />
-                        <Route path="/product" >
-                            <Route index element={<ProductPage />} />
-                            <Route path=":id" element={<ProductDetailPage />} />
-                        </Route >
-                        <Route path="*" element={<Error404 />} />
-                    </Route>
-                </Routes>
-            </BrowserRouter>
-        </BudgetContext.Provider>
-    )
+  return (
+    <BudgetProvider>
+      <BrowserRouter>
+        <Routes>
+          <Route element={<DefaultLayout />}>
+            <Route path="/" element={<HomePage />} />
+            <Route path="/about" element={<AboutPage />} />
+            <Route path="/product">
+              <Route index element={<ProductPage />} />
+              <Route path=":id" element={<ProductDetailPage />} />
+            </Route>
+            <Route path="*" element={<Error404 />} />
+          </Route>
+        </Routes>
+      </BrowserRouter>
+    </BudgetProvider>
+  );
 }
+
 
 export default App
