@@ -4,12 +4,7 @@ import FakeStoreCard from "./FakeStoreCard";
 export default function FakeStoreList() {
   const [products, setProducts] = useState([]);
 
-  useEffect(() => {
-    axios
-      .get("https://fakestoreapi.com/products")
-      .then((res) => setProducts(res.data))
-      .catch((err) => console.error(err));
-  }, []);
+  
 
   return (
     <div>

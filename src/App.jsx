@@ -15,19 +15,21 @@ import Error404 from './pages/Error404';
 function App() {
 
     return (
-        <BrowserRouter>
-            <Routes>
-                <Route element={<DefaultLayout />}>
-                    <Route path="/" element={<HomePage />} />
-                    <Route path="/about" element={<AboutPage />} />
-                    <Route path="/product" >
-                        <Route index element={<ProductPage />} />
-                        <Route path=":id" element={<ProductDetailPage />} />
-                    </Route >
-                    <Route path="*" element={<Error404 />} />
-                </Route>
-            </Routes>
-        </BrowserRouter>
+        <BudgetContext.Provider>
+            <BrowserRouter>
+                <Routes>
+                    <Route element={<DefaultLayout />}>
+                        <Route path="/" element={<HomePage />} />
+                        <Route path="/about" element={<AboutPage />} />
+                        <Route path="/product" >
+                            <Route index element={<ProductPage />} />
+                            <Route path=":id" element={<ProductDetailPage />} />
+                        </Route >
+                        <Route path="*" element={<Error404 />} />
+                    </Route>
+                </Routes>
+            </BrowserRouter>
+        </BudgetContext.Provider>
     )
 }
 
